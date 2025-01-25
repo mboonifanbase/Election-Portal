@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mbooni Fan Base Election Portal</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-image: url('https://shorturl.at/r8fYP');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    .container {
+      max-width: 900px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: rgba(245, 245, 220, 0.9);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      border-radius: 8px;
+      display: none;
+      position: relative;
+    }
+    .logo {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 100px;
+      height: auto;
+    }
+    h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      text-align: center;
+      color: #2e7d32;
+      font-family: 'Trebuchet MS', sans-serif;
+    }
+    .form-wrapper {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      margin-top: 30px;
+    }
+    .column {
+      flex: 1;
+    }
+    .position {
+      margin-top: 20px;
+    }
+    label {
+      font-weight: bold;
+      color: #2e7d32;
+    }
+    .candidate {
+      margin-top: 10px;
+    }
+    button {
+      display: block;
+      width: 100%;
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #2e7d32;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #256629;
+    }
+    #message {
+      margin-top: 20px;
+      color: #256629;
+      font-weight: bold;
+      text-align: center;
+    }
+    #results {
+      margin-top: 30px;
+    }
+    .result-bar {
+      background-color: #e0e0e0;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 10px;
+    }
+    .result-bar div {
+      height: 20px;
+      text-align: right;
+      padding-right: 10px;
+      line-height: 20px;
+      color: white;
+      border-radius: 10px;
+    }
+    #loginModal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    #loginModalContent {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
+    #loginModalContent input {
+      padding: 10px;
+      width: 80%;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    #loginModalContent button {
+      padding: 10px 20px;
+      background-color: #2e7d32;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #loginModalContent button:hover {
+      background-color: #256629;
+    }
+    #errorMessage {
+      color: red;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div id="loginModal">
+    <div id="loginModalContent">
+	  <h1>MBOONI FAN BASE ELECTTION PORTAL</h1>
+      <h2>Enter Your ID/Passport/Military Number</h2>
+      <input type="text" id="userID" placeholder="Enter your number" />
+      <button id="loginButton">Proceed</button>
+      <p id="errorMessage"></p>
+    </div>
+  </div>
+
+  <div class="container" id="votingContainer">
+    <img src="https://shorturl.at/UwpXN" alt="Mbooni Fan Base Logo" class="logo">
+    <h1>Mbooni Fan Base Election Portal</h1>
+    <div class="form-wrapper">
+      <div class="column">
+        <h2>Vice Chairperson</h2>
+        <form id="votingForm">
+          <div class="position">
+            <label for="viceChairperson">Vote for Vice Chairperson (Female only):</label>
+            <div class="candidate">
+              <input type="radio" name="viceChairperson" value="Jacinta" id="vice-jacinta">
+              <label for="vice-jacinta">Jacinta</label>
+            </div>
+            <div class="candidate">
+              <input type="radio" name="viceChairperson" value="Ruth" id="vice-ruth">
+              <label for="vice-ruth">Ruth </label>
+            </div>
+            <div class="candidate">
+              <input type="radio" name="viceChairperson" value="Sylvia" id="vice-sylvia">
+              <label for="vice-sylvia">Sylvia</label>
+            </div>
+            <div class="candidate">
+              <input type="radio" name="viceChairperson" value="Liz" id="vice-liz">
+              <label for="vice-liz">Liz (Diaspora)</label>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="column">
+        <h2>Member</h2>
+        <form id="votingFormMember">
+            <div class="position">
+            <label for="member">Vote for Member :</label>
+            <div class="candidate">
+              <input type="radio" name="member" value="Snr Uamba" id="member-snr-uamba">
+              <label for="member-snr-uamba">Snr Uamba</label>
+            </div>
+            <div class="candidate">
+              <input type="radio" name="member" value="Domih" id="member-domih">
+              <label for="member-domih">Domih</label>
+            </div>
+            <div class="candidate">
+              <input type="radio" name="member" value="Pepsi Jr" id="member-pepsi-jr">
+              <label for="member-pepsi-jr">Pepsi Jr</label>
+            </div>
+            <div class="candidate">
+              <input type="radio" name="member" value="Fabian" id="member-fabian">
+              <label for="member-fabian">Fabian</label>
+            </div>
+            <div class="candidate">
+              <input type="radio" name="member" value="Rono" id="member-rono">
+              <label for="member-rono">Rono</label>
+            </div>
+            <div class="candidate">
+              <input type="radio" name="member" value="Kisia Nzuki" id="member-kisia-nzuki">
+              <label for="member-kisia-nzuki">Kisia Nzuki</label>
+            </div>
+            <div class="candidate">
+              <input type="radio" name="member" value="Oti" id="member-oti">
+              <label for="member-oti">Oti</label>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <button id="submitVotes">Submit Votes</button>
+    <p id="message"></p>
+    <div id="results">
+      <h2>Results</h2>
+      <div id="viceResults"></div>
+      <div id="memberResults"></div>
+    </div>
+  </div>
+ <footer style="
+    margin-top: 50px; 
+    background-color: #2e7d32; 
+    color: white; 
+    text-align: center; 
+    padding: 15px; 
+    font-size: 14px;
+  ">
+    Mbooni Fan Base © <span id="currentYear"></span>. Powered by eCODES
+  </footer>
+
+  <script>
+    // Dynamically set the current year
+    document.getElementById("currentYear").textContent = new Date().getFullYear();
+  </script>
+</body>
+  <script>
+    const eligibleIDs = [
+      "36294899", "36923085", "22657612", "AK1183371", "36883654", 
+      "38822931", "37029280", "31177919", "226214660", "29991328", 
+      "29540066", "28866786", "27885423", "36916297", "28174656", 
+      "33122629", "33615979", "36070380", "30352043", "37820683", 
+      "27494173", "32015961"
+    ];
+
+    const totalVotes = 21;
+    let votes = { viceChairperson: {}, member: {} };
+
+    document.getElementById("loginButton").addEventListener("click", () => {
+      const userID = document.getElementById("userID").value;
+      if (eligibleIDs.includes(userID)) {
+        if (localStorage.getItem(`voted-${userID}`)) {
+          document.getElementById("errorMessage").innerText = "You have already voted!";
+        } else {
+          document.getElementById("loginModal").style.display = "none";
+          document.getElementById("votingContainer").style.display = "block";
+        }
+      } else {
+        document.getElementById("errorMessage").innerText = "Invalid ID/Passport/Military Number!";
+      }
+    });
+
+    document.getElementById("submitVotes").addEventListener("click", () => {
+      const viceSelection = document.querySelector('input[name="viceChairperson"]:checked');
+      const memberSelection = document.querySelector('input[name="member"]:checked');
+      const userID = document.getElementById("userID").value;
+
+      if (!viceSelection || !memberSelection) {
+        alert("Please select a candidate for both positions!");
+        return;
+      }
+
+      if (localStorage.getItem(`voted-${userID}`)) {
+        alert("You have already voted!");
+        return;
+      }
+
+      // Record votes
+      votes.viceChairperson[viceSelection.value] = 
+        (votes.viceChairperson[viceSelection.value] || 0) + 1;
+      votes.member[memberSelection.value] = 
+        (votes.member[memberSelection.value] || 0) + 1;
+
+      localStorage.setItem(`voted-${userID}`, true);
+
+      // Display results
+      displayResults();
+    });
+
+    function displayResults() {
+      const viceResults = document.getElementById("viceResults");
+      const memberResults = document.getElementById("memberResults");
+
+      viceResults.innerHTML = "<h3>Vice Chairperson</h3>";
+      memberResults.innerHTML = "<h3>Member</h3>";
+
+      Object.keys(votes.viceChairperson).forEach(candidate => {
+        const count = votes.viceChairperson[candidate];
+        const percent = ((count / totalVotes) * 100).toFixed(2);
+        viceResults.innerHTML += `
+          <div class="result-bar">
+            <div style="width: ${percent}%; background-color: #2e7d32;">
+              ${candidate}: ${count} votes (${percent}%)
+            </div>
+          </div>
+        `;
+      });
+
+      Object.keys(votes.member).forEach(candidate => {
+        const count = votes.member[candidate];
+        const percent = ((count / totalVotes) * 100).toFixed(2);
+        memberResults.innerHTML += `
+          <div class="result-bar">
+            <div style="width: ${percent}%; background-color: #2e7d32;">
+              ${candidate}: ${count} votes (${percent}%)
+            </div>
+          </div>
+        `;
+      });
+
+      document.getElementById("message").innerText = "Thank you for voting!";
+    }
+  </script>
+</body>
+</html>
+
+         
